@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			var arr=[1,2,3,4,5,6];
+			var arr2=[8,9,10];
+			arr.push(4);		//尾部添加
+			arr.pop();			//尾部删除
+			arr.shift();		//头部删除
+			arr.unshift(0);		//头部添加
+			alert(arr);
+			
+			arr.splice(1,2);  //splice(删除位置，长度)
+			arr.splice(2,0,'a','b','c'); //从2位置处删除0个，并插入a b c
+			arr.splice(2,2,'a','b');		//从2位置处删除两个兵插入a b 相当于替换
+			
+			alert(arr.concat(arr2));		//数组连接
+			alert(arr.join('-'));			//指定分隔符
+			alert(arr.sort());				//排序（字符串）
+			
+			//下方为排列数字时的使用方法
+			arr.sort(function(n1,n2){
+				return n1-n2;
+			})
+			alert(arr);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

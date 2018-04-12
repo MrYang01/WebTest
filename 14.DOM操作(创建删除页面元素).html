@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload=function(){
+				var oBtn=document.getElementById("btn1");
+				var oTxt=document.getElementById("txt1");
+				var oUl=document.getElementById("ul1");
+				
+				oBtn.onclick=function(){
+					var oLi=document.createElement("li");//只是存在内存中，不显示
+					var aLi=document.getElementsByTagName("li");
+					
+					var aA=document.getElementsByTagName("a");
+					
+					oLi.innerHTML=oTxt.value+"   <a href='javascript:;'>删除</a>";
+					
+					//oUl.appendChild(oLi);//把上边创建的li加到ul下边（加到最后）
+					//oUl.insertBefore(oLi,aLi[0]);//在第一个元素之前插入(只写这一个在IE下不兼容)
+					
+					if(aLi.length>0){
+						oUl.insertBefore(oLi,aLi[0]);
+					}
+					else{
+						oUl.appendChild(oLi);
+					}
+					oTxt.value="";
+					oTxt.focus();
+					for (var i=0;i<aA.length;i++) {
+						aA[i].onclick=function(){
+							oUl.removeChild(this.parentNode);
+						}
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<input type="text" name="" id="txt1" value="" />
+		<input type="button" name="" id="btn1" value="创建li" />
+		<ul id="ul1">
+		</ul>
+	</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>JS制作简易日历</title>
+		<style type="text/css">
+			.clear{
+				clear:both;
+			}
+			#tab{
+				width: 216px;
+				border: 20px solid #aaa;
+				margin: 0 auto;
+			}
+			#tab #content{
+				background: #ccc;
+				padding-bottom: 30px;
+			}
+			#tab ul{
+				margin: 0;
+				padding: 0px;
+				background: #AAAAAA;
+			}
+			#tab li{
+				list-style: none;
+				width: 70px;
+				height: 70px;
+				border: 1px solid  #999999;
+				float: left;
+				color: white;
+				background: #333;
+				text-align: center;
+			}
+			#tab li h2{
+				margin: 10px 0px 0px 0px;
+			}
+			#tab h1{
+				margin: 0;
+				line-height: 80px;
+			}
+			#tab li p{
+				margin: 0px;
+			}
+			
+			#tab .active{
+				background-color: #FFFFFF;
+				color: red;
+			}
+			/*
+			 原先没有写#tab,样式无法实现效果.
+			原因:选择器的优先级——特指度
+				id  		100
+				class 		10
+				element 	1
+				哪个特指度计算结果大 ,浏览器就以哪个为优先
+			参考：https://www.cnblogs.com/wangfupeng1988/p/4285251.html
+			*/
+				
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+				var arr=[
+					"一月快过年啦",
+					"二月段US谁都不阿萨德撒",
+					"三月",
+					"四月",
+					"五月",
+					"六月",
+					"年代初",
+					"十多年",
+					"cnncsldkisdncc",
+					"撒上看的哪款",
+					"不错看看",
+					"十二月吧哈哈神经病三"
+				];
+				var oDiv=document.getElementById("tab");
+				var aLi=oDiv.getElementsByTagName("li");
+				var oTxt=oDiv.getElementsByTagName("div")[1];
+				
+				for (var i=0;i<aLi.length;i++) {
+					aLi[i].index=i;
+					aLi[i].onmouseover=function(){
+						for (var i=0;i<aLi.length;i++) {
+							aLi[i].className="";
+						}
+						this.className="active";
+						oTxt.innerHTML="<h1>"+(this.index+1)+"月活动</h1><p>"+arr[this.index]+"</p>";	
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="tab" class="calendar">
+			<ul>
+				<li class="active"><h2>1</h2><p>Jan</p></li>
+				<li><h2>2</h2><p>Feb</p></li>
+				<li><h2>3</h2><p>Mar</p></li>
+				<li><h2>4</h2><p>Apr</p></li>
+				<li><h2>5</h2><p>May</p></li>
+				<li><h2>6</h2><p>Jun</p></li>
+				<li><h2>7</h2><p>Jul</p></li>
+				<li><h2>8</h2><p>Aug</p></li>
+				<li><h2>9</h2><p>Sep</p></li>
+				<li><h2>10</h2><p>Oca</p></li>
+				<li><h2>11</h2><p>Nov</p></li>
+				<li><h2>12</h2><p>Dec</p></li>
+			</ul>
+			<div class="clear"></div>
+			<div id="content">
+				<h1>1月活动</h1><p>一月活动快过年啦</p>
+			</div>
+		</div>
+	</body>
+</html>

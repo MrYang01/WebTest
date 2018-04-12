@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<style type="text/css">
+			#div1{
+				width: 150px;
+				height: 200px;
+				background: #AAAAAA;
+				position: absolute;
+				top: 100px;
+				left: -150px;
+			}
+			span{
+				width: 20px;
+				height: 70px;
+				background: #CCCCCC;
+				border-bottom-right-radius: 5px;
+				border-top-right-radius: 5px;
+				position: absolute;
+				top: 65px;
+				right: -20px;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+				var oDiv=document.getElementById("div1");
+				
+				var timer=null;
+				
+				function move(iTarget){
+					var speed=0;
+					if(oDiv.offsetLeft>iTarget){
+						speed=-10;
+					} else{
+						speed=10;
+					}
+					clearInterval(timer);
+					timer=setInterval(function(){
+						if (oDiv.offsetLeft==iTarget) {
+							clearInterval(timer);
+						} else{
+							oDiv.style.left=oDiv.offsetLeft+speed+"px";
+						}
+					},30);
+				}
+				oDiv.onmouseover=function (){
+					move(0);
+				};
+				oDiv.onmouseout=function (){
+					move(-150);
+				};
+			}
+		</script>
+		<title></title>
+	</head>
+	<body>
+		<div id="div1">
+			<span>
+				分享到
+			</span>
+		</div>
+	</body>
+</html>

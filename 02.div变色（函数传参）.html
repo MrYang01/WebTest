@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1,#div2{
+				width: 200px;
+				height: 200px;
+				background: #CCCCCC;
+			}
+			
+		</style>
+		<script type="text/javascript">
+//			传单个参数
+			function setColor (color) {
+				oDiv=document.getElementById("div1");
+				oDiv.style.background=color;
+			}
+			/*
+			如果不使用传参,就得使用三个函数来实现
+			函数传参:参数就是占位符
+			function toGreen () {
+				oDiv=document.getElementById("div1");
+				oDiv.style.background=green;
+			}
+			function toYellow () {
+				oDiv=document.getElementById("div1");
+				oDiv.style.background=yellow;
+			}
+			function toRed () {
+				oDiv=document.getElementById("div1");
+				oDiv.style.background=red;
+			}
+			*/
+
+//			传多个参数
+			/*
+			两种操作属性的方法:
+			1.oDiv.style.background="red";
+			2.oDiv.style['background']="red";//要修改的属性不固定时使用
+			js中但凡有.的地方都可以用[]代替
+			*/
+			function setStyle (name,value) {
+				oDiv=document.getElementById("div2");
+				oDiv.style[name]=value;
+				//如果写成oDiv.style.name的话，系统会认为是name属性，而实际并没有，所以出错
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" onclick="setColor('green');" value="变绿" />
+		<input type="button" onclick="setColor('yellow');" value="变黄" />
+		<input type="button" onclick="setColor('red');" value="变红" />
+		<div id="div1"></div>
+		
+		<input type="button" onclick="setStyle('width','300px');" value="变宽" />
+		<input type="button" onclick="setStyle('height','300px');" value="变高" />
+		<input type="button" onclick="setStyle('background','black');" value="变黑" />
+		<div id="div2"></div>
+	</body>
+</html>

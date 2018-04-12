@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1{
+				width: 200px; height: 200px; background: red;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+				var oDiv=document.getElementById("div1");
+				//alert(oDiv.currentStyle.width);//currentStyle只兼容IE
+				//alert(getComputedStyle(oDiv,false).height);//谷歌，火狐下兼容 getComputedStyle第二个参数没用，可以随意写
+				if (currentStyle) {
+					alert(oDiv.currentStyle.width);
+				} else{
+					alert(getComputedStyle(oDiv,false).height);s
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="div1">
+			
+		</div>
+	</body>
+</html>

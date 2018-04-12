@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				background: black;
+				color: white;
+				font-size: 60px;
+				line-height: 60px;
+			}
+			img{
+				width: 25px;
+			}
+		</style>
+		<script type="text/javascript">
+			function toDou (n) {
+				if (n<10) {
+					return '0'+n;
+				} else{
+					return ''+n;
+				}
+			}
+			window.onload=function(){
+				var aImg=document.getElementsByTagName("img");
+				function tick(){
+					var oDate=new Date();
+					var str=toDou(oDate.getHours())+toDou(oDate.getMinutes())+toDou(oDate.getSeconds())
+					
+					for (var i=0;i<aImg.length;i++) {
+						aImg[i].src='img/oclock/'+str.charAt(i)+'.png';			//原来是str[i],但是IE7不兼容
+					}
+				}
+				setInterval(tick,1000);//本来可以把函数当成匿名函数放在定时器里边，但是由于定时器刚打开并不会执行，一秒之后才会执行，所以采取这种方法
+				tick();
+			}
+		</script>
+	</head>
+	
+	<body>
+		<img src=""/>
+		<img src=""/>
+		:
+		<img src=""/>
+		<img src=""/>
+		:
+		<img src=""/>
+		<img src=""/>
+	</body>
+</html>

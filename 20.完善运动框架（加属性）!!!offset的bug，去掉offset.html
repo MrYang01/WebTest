@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 200px;
+				height: 200px;
+				background: royalblue;
+				border: 1px solid black;
+				float: left;
+				margin: 10px;
+			}
+		</style>
+		<script type="text/javascript">
+			function getStyle(obj,name){
+				if(obj.currentStyle){
+					return obj.currentStyle[name];
+				} else {
+					return getComputedStyle(obj,false)[name];
+				}
+			}
+			
+			function startMove(obj,attr,iTarget){
+				clearInterval(obj.timer);
+				obj.timer=setInterval(function(){
+					var cur=parseInt(getStyle(obj,attr));
+					
+					var speed=(iTarget-cur)/6;
+					speed=speed>0?Math.ceil(speed):Math.floor(speed);
+					
+					if(cur==iTarget){
+						clearInterval(obj.timer);
+					} else{
+						obj.style[attr]=cur+speed+"px";
+					}
+				},30);
+			}
+			
+			window.onload=function(){
+				var aDiv=document.getElementsByTagName("div");
+				
+//				for(var i=0;i<aDiv.length;i++){
+//					aDiv[i].timer=null;
+					aDiv[0].onmouseover=function(){
+						startMove(this,"height",400);
+					};
+					
+					aDiv[0].onmouseout=function(){
+						startMove(this,"height",200);
+					}
+					aDiv[1].onmouseover=function(){
+						startMove(this,"width",400);
+					};
+					
+					aDiv[1].onmouseout=function(){
+						startMove(this,"width",200);
+					}
+//				}
+			}
+		</script>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+	</body>
+</html>
